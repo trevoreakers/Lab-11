@@ -229,7 +229,8 @@ public class CalculatorFrame extends JFrame
         slider.addChangeListener(new ChangeListener() {
         	public void stateChanged(ChangeEvent e) {
         		// TODO: change the text in the first JTextField. Clear error and result
-        		
+        		int sliderText = slider.getValue();
+        		firstBox.setText(Integer.toString(sliderText));
         		errorMessage.setText("");
         		computeResult.setText("");
             }
