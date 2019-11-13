@@ -184,7 +184,7 @@ public class CalculatorFrame extends JFrame
         add.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	// TODO: change the opSign, clear the error message and compute result.
-            	opSign.setText("+ ");
+            	opSign.setText("+");
             	errorMessage.setText("");
             	computeResult.setText("");
             } 
@@ -193,7 +193,7 @@ public class CalculatorFrame extends JFrame
         multiply.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	// TODO: change the opSign, clear the error message and compute result.
-            	opSign.setText("* ");
+            	opSign.setText("*");
             	errorMessage.setText("");
             	computeResult.setText("");
             }
@@ -202,7 +202,7 @@ public class CalculatorFrame extends JFrame
         // TODO: implement the actionlisteners for the divide and equality buttons the same way:
         exponentiate.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		opSign.setText("^ ");
+        		opSign.setText("^");
         		errorMessage.setText("");
         		computeResult.setText("");
         	}
@@ -210,7 +210,7 @@ public class CalculatorFrame extends JFrame
         
         modulus.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		opSign.setText("% ");
+        		opSign.setText("%");
         		errorMessage.setText("");
         		computeResult.setText("");
         	}
@@ -269,7 +269,23 @@ public class CalculatorFrame extends JFrame
                      * Finally, perform the operation on the integers and write out the result as
                      * a String to the computeResult text field.
                      */
-                    
+                    int result = 0;
+            		if(opSign.getText().contains("+")) {
+            			result = (Integer.parseInt(firstBox.getText())) + (Integer.parseInt(secondBox.getText()));
+            			computeResult.setText(Integer.toString(result));
+            		} else if (opSign.getText().contains("*")) {
+            			result = (Integer.parseInt(firstBox.getText())) * (Integer.parseInt(secondBox.getText()));
+            			computeResult.setText(Integer.toString(result));
+            		} else if (opSign.getText().contains("^")) {
+            			int firstNumber = Integer.parseInt(firstBox.getText());
+            			int secondNumber = Integer.parseInt(secondBox.getText());
+            			result = (int) Math.pow(firstNumber, secondNumber);
+            			computeResult.setText(Integer.toString(result));
+            		} else if (opSign.getText().contains("%")) {
+            			result = (Integer.parseInt(firstBox.getText())) % (Integer.parseInt(secondBox.getText()));
+            			computeResult.setText(Integer.toString(result));
+            		}
+            		
                     // Clear the error message text field:
                     errorMessage.setText("");
                 }
