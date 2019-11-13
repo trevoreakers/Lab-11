@@ -229,6 +229,9 @@ public class CalculatorFrame extends JFrame
         slider.addChangeListener(new ChangeListener() {
         	public void stateChanged(ChangeEvent e) {
         		// TODO: change the text in the first JTextField. Clear error and result
+        		
+        		errorMessage.setText("");
+        		computeResult.setText("");
             }
         });
 
@@ -274,13 +277,17 @@ public class CalculatorFrame extends JFrame
                 // (2) Divide by zero -> ArithmeticException
                 catch (NumberFormatException error) {
                 	// TODO: display the error message "ERROR: Please enter a valid integer."
+                	errorMessage.setText("ERROR: Please enter a valid integer.");
                     // in the error message text field.
                 	// TODO: Clear computeResult
+                	computeResult.setText("");
                 }
                 catch (ArithmeticException error) {
                 	// TODO: display the error message "ERROR: Tried to divide by 0."
+                	errorMessage.setText("ERROR: Tried to divide by 0.");
                     // in the error message text field.
                 	// TODO: Clear computeResult
+                	computeResult.setText("");
                 }
             }
         });
